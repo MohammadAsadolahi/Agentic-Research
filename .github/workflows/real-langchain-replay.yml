@@ -38,3 +38,30 @@ jobs:
         run: python -c "from langchain.agents.factory import _patch_invalid_tool_calls; print(_patch_invalid_tool_calls)"
       - name: Execute historical real-package boundary check
         run: python experiments/real_langchain_replay/reproduce_real_provider.py --expect "${{ matrix.expected }}"
+
+  route-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {label: affected-route, source: "5893459c4f2bfac6c8d3262cae1e3f2246d9287f", expected: fail}
+          - {label: fixed-route, source: "382bace06c90c3013186f17788ed15af69ce5b55", expected: pass}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Fetch pinned source before or after router fix
+        run: |
+          mkdir upstream
+          cd upstream
+          git init -q
+          git remote add origin https://github.com/langchain-ai/langchain.git
+          git fetch --depth 1 origin "${{ matrix.source }}"
+          git checkout -q --detach FETCH_HEAD
+      - name: Install real LangChain source snapshot
+        run: python -m pip install --disable-pip-version-check -e "./upstream/libs/langchain_v1"
+      - name: Replay middleware graph routing defect (offline)
+        run: python experiments/real_langchain_replay/reproduce_real_route.py --expect "${{ matrix.expected }}"
