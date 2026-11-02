@@ -6,6 +6,8 @@ This repository tracks a research investigation into **AI-assisted design and co
 
 ## Start here
 
+**[Broad research pivot + third real-code reproduction](research/2026-11-02_BROAD_PIVOT_AND_THIRD_REPRODUCTION.md)** — six independent research domains, prior-art threats, the most plausible next research direction (functional monitoring integrity under routine software edits), and an independently executed OpenAI Agents SDK Session recovery before/after experiment. [Verified CI](https://github.com/MohammadAsadolahi/Agentic-Research/actions/runs/41472661002).
+
 **[New experimental results: two real cross-boundary regressions](research/2026-11-02_TWO_REAL_BOUNDARIES_RESULTS.md)** — four verified GitHub Actions cases with pinned upstream code, raw logs, provenance correction and next strong-baseline gate. [Run and reproduce](https://github.com/MohammadAsadolahi/Agentic-Research/actions/runs/41457528866).
 
 **[New: change-aware contract verification research and executed witness](research/2026-11-02_CHANGE_AWARE_CONTRACT_TESTING.md)** — independent literature audit, source-linked real incident, 8-test synthetic Python demonstration and next falsification protocol. [Code](experiments/change_aware_contracts/).
