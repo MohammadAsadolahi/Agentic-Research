@@ -17,7 +17,10 @@ const { InMemorySpanExporter, SimpleSpanProcessor } = require(tracePackage);
 const exporter = new InMemorySpanExporter();
 const sdk = new NodeSDK({
   autoDetectResources: false,
-  spanProcessors: [new SimpleSpanProcessor(exporter)],
+  // SDK trace 3.x changed this constructor to an options object.
+  spanProcessors: [new SimpleSpanProcessor(
+    tracePackage === '@opentelemetry/sdk-trace' ? { exporter } : exporter
+  )],
   instrumentations: [new HttpInstrumentation()],
 });
 sdk.start(); // IMPORTANT: register before importing node:http
