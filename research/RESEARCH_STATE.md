@@ -1,5 +1,8 @@
 # Research state and decision log
 
+> **Important new reassessment (2026-11-02):** The latest literature review adds direct empirical evidence from Treude & Baltes (Oct 26), SLUMP/ProjectGuard, StateHarness, BenchTrace, ModularRSI, HarnessFix, and IEEE change-impact research. These further weaken novelty claims around structured project memory, scoped failure diagnosis and impact-aware test selection. **Read [Critical reassessment](2026-11-02_REASSESSMENT.md) before starting an algorithm or writing a novelty claim.** Original hypotheses below remain a historical research log, not an assertion of unresolved novelty.
+
+
 **Last updated:** 2026-11-02  
 **Stage:** problem clarification and prior-art audit; empirical study NOT started  
 **Current novelty confidence:** LOW for the original broad idea; UNDETERMINED for the narrowly stated hypotheses.
