@@ -18,7 +18,7 @@ These are research fields/subfields, not yet titles or methods.
 
 | Priority | Field-level area | Why emerging and hard | Direct novelty blockers | Feasibility / decision |
 | --- | --- | --- | --- | --- |
-| **A1** | **Causal ecology of agent-created shared environments** (external artifacts, public knowledge, persistent downstream behavior) | Separate agents can alter each other's *environment* without direct messages; nonlinear effects, selection biases, observation vs causation | Copying Explains (Sept), Mechanics of a Swarm (Sept), No Attacker Needed (Apr), SkillRelayGuard (Oct), information contagion, classical information cascades | **Best first empirical probe** with contained stateful tool sandbox, independent task oracles; conditional GO |
+| **A1** | **Causal ecology of agent-created shared environments** (external artifacts, public knowledge, persistent downstream behavior) | Separate agents can alter each other's *environment* without direct messages; nonlinear effects, selection biases, observation vs causation | ScaleMAS (Oct), Multi-Agent Transactive Memory (June), SwarmWorld (Aug), Copying Explains (Sept), Mechanics of a Swarm (Sept), No Attacker Needed (Apr), SkillRelayGuard (Oct), classical stigmergy/database isolation | **Best first empirical probe** with contained stateful tool sandbox, independent task oracles; conditional GO |
 | **A2** | **Agent ecosystem externality accounting** (who benefits, who bears hidden costs) | Successful individual agents can harm other principals, later users and shared infrastructure in ways that ordinary task metrics do not capture | A²-Failures (Oct), agent bullwhip (May), ClashBench, Agent Bazaar, PNAS whistleblower, established externality economics | Conditional GO only if task/third-party counterfactuals are causally identified, not one more scalar ethics score |
 | **A3** | **Cross-principal verification economics** (independent evidence acquisition between agents with different owners) | Private state and unverifiable factual claims across agent organizations; audit is costly, potentially strategic | A²-Failures (Oct; 2,500+ runs), A2A protocol mechanism design (Aug), current formal contract/payout work, classic costly verification | Conditional GO for actionable study; no generic "peer checks" or certificate method claim |
 | **B1** | **Population resilience and recovery under churn** (retirement, restart, replacement, network fragmentation) | Fitness/population is endogenous; population can collapse or recover with network externalities | Ecology of AI Agents (Oct), Population Physics (Sept), SwarmWorld, TerraLingua and older ecology | Deep science, expensive real agents, strong phase-transition/stat-physics baselines |
@@ -40,6 +40,16 @@ These are research fields/subfields, not yet titles or methods.
 3. [No Attacker Needed: Unintentional Cross-User Contamination in Shared-State LLM Agents](https://arxiv.org/abs/2604.01350) (Apr). Shows benign shared persistence can silently contaminate other users; artifact carryover is already studied. Distinguish **independently operated agents sharing external world** from one agent's shared memory; not a guarantee of distinct novelty.
 4. [Understanding and Mitigating Cross-Session Attacks via Persistent Artifacts in Agent Skill Composition](https://arxiv.org/abs/2610.13227) (Oct). SkillRelayBench and provenance-sensitive SkillRelayGuard already cover malicious persistent skill artifacts across sessions. New work on provenance tags alone is NO-GO.
 5. [Search-Time Contamination in Deep Research Agents](https://arxiv.org/abs/2606.05241) (June). Benchmark metadata/answer retrieval inflates evaluation. General contamination detection already studied.
+
+**Additional direct shared-substrate method threats (checked after writing the initial draft):**
+
+24. [Scaling Multi-Agent Intelligence with Substrate-Centric Coordination / ScaleMAS](https://arxiv.org/abs/2610.16120) (Oct 12). Already implements asynchronous agents using an append-only linked shared datastore, bounded top-k retrieval, citation-ranking and persistent knowledge across agent dropout. It directly rules out claiming **persistent artifact substrate**, bounded-read shared memory or failure-resilient shared coordination as novel.
+25. [Multi-Agent Transactive Memory](https://arxiv.org/abs/2606.19911) (June). Population-level producer/consumer transfer of procedural trajectories, with downstream task benefit. Unrestricted shared experience retrieval is already studied.
+26. [SwarmWorld](https://arxiv.org/abs/2608.26081) (Aug). Independent agents coordinate indirectly through durable world artifacts, explicitly called *stigmergy*, producing useful reusable technologies. Indirect coordination via world state was already independently evaluated.
+27. [Emergence World](https://arxiv.org/abs/2606.08367) (June). Long-horizon persistent cross-vendor agent societies sharing an evolving world. Long-lived shared multi-agent simulation is not new.
+28. [Emergent Collusion in Long-Horizon LLM Agent Interaction](https://arxiv.org/abs/2609.24967) (Sept). Long-run peer verification and shared histories can lead to collusion, including causal peer interventions. Generic repeated interaction harms are not novel.
+
+These additional works **lower the novelty rating for A1 as a proposed coordination architecture**. The narrower causal question remains conditional: independent agent/world *externality outcomes*, across principals, with measured counterfactual exposure. That *may* still be publishable, but is not established as an unclaimed method.
 
 ### Cross-principal agent interaction and externalities
 
@@ -110,7 +120,7 @@ For each actual LLM run record: action trace, successful reads and writes, indep
 ## Research decision
 
 **Recommend narrowing two fields for method-oriented follow-up:**
-- **Primary:** causal ecology of autonomous agents sharing *external worlds* across sessions, principals and ownership boundaries.
+- **Primary:** causal ecology of autonomous agents sharing *external worlds* across sessions, principals and ownership boundaries — specifically **causal exposure/outcome accounting and beneficial-vs-harmful downstream effects**, NOT another shared datastore (ScaleMAS) or shared trajectory memory (MATM).
 - **Secondary:** cross-principal verification and externality accounting, with A²-Failures as available agent-run data.
 
 **Do not call this a discovered novel paper yet.** The value of this report is a better controlled field-selection gate and direct, recent novelty blockers.
