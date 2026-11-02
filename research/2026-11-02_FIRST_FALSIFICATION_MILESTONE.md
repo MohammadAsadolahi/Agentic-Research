@@ -1,3 +1,22 @@
+# Verified real-library replay result — added November 2, 2026
+
+**Executed GitHub Actions:** [run #41457189971](https://github.com/MohammadAsadolahi/Agentic-Research/actions/runs/41457189971), workflow commit [105c70e](https://github.com/MohammadAsadolahi/Agentic-Research/commit/105c70e2a784e4e8775fc4b3e10d5f9b378d1902). This result supersedes the earlier pending language below.
+
+We pinned the **actual factory source at upstream LangChain commit 80b74090515a594cc8421fb2d82e98f4e256c29f** and installed its Python project in editable mode for both jobs. Only the Anthropic adapter release changed; the CI tests invoked real LangChain factory and provider serializer code, with no network model calls.
+
+| Upstream factory source | Anthropic adapter | Local factory repair | Provider wire contract | Orphan result ids |
+| --- | --- | --- | --- | --- |
+| 80b740905 | 1.7.4 | PASS | **FAIL (expected)** | toolu_01ABC |
+| 80b740905 | 1.7.5 | PASS | PASS | none |
+
+Both jobs completed successfully: the affected job asserts **expected fail** and verifies the regression; the corrected job asserts **expected pass**. The provider emitted 0 tool_use ids versus 1 tool_result id on the affected version; emitted 1 matching tool_use and 1 tool_result on the corrected version. Machine-readable JSON is printed in each job log.
+
+**Important provenance correction:** [initial CI run #41456902263](https://github.com/MohammadAsadolahi/Agentic-Research/actions/runs/41456902263) failed for the wrong reason: released langchain==1.4.2 did NOT expose the private factory helper. The original issue described **master source commit 80b740905**, alongside installed package version metadata. The experimental comparison MUST pin the source SHA, not infer that code is in PyPI version 1.4.2. The corrected CI therefore installed the same upstream factory source commit in both environments. Reported metadata prints 1.4.2 for the source project; treat it as package metadata, **not source provenance**.
+
+**Scope:** A real source-level integration test reproduced a historical *cross-provider* defect and its correction; it did NOT call a live Anthropic endpoint. It has not shown failure of strong contemporary regression test selection: our deliberately path-only selector is not that. We still require unseen failures, strong method baselines and matched cost before proposing a novel mechanism.
+
+---
+
 # First falsification milestone: real-package test harness
 
 Date: November 2, 2026. State: experimental setup; do not treat an expected result as observed.
