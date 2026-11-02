@@ -1,0 +1,29 @@
+name: LangChain real-package offline regression replay
+
+on:
+  workflow_dispatch:
+  push:
+    paths: ["experiments/real_langchain_replay/**", ".github/workflows/real-langchain-replay.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  offline-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {label: affected, lc: "1.4.2", anthro: "1.7.4", expected: fail}
+          - {label: repaired, lc: "1.4.3", anthro: "1.7.5", expected: pass}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install pinned packages
+        run: python -m pip install --disable-pip-version-check "langchain==${{ matrix.lc }}" "langchain-anthropic==${{ matrix.anthro }}"
+      - name: Run boundary replay
+        run: python experiments/real_langchain_replay/reproduce_real_provider.py --expect "${{ matrix.expected }}"
