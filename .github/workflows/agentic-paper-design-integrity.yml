@@ -1,0 +1,34 @@
+name: Agentic paper design integrity (no model evaluation)
+
+on:
+  push:
+    paths:
+      - 'experiments/controlarena_paper_gate/**'
+      - 'experiments/shifttogether/**'
+      - '.github/workflows/agentic-paper-design-integrity.yml'
+  pull_request:
+    paths:
+      - 'experiments/controlarena_paper_gate/**'
+      - 'experiments/shifttogether/**'
+      - '.github/workflows/agentic-paper-design-integrity.yml'
+  workflow_dispatch:
+
+jobs:
+  design-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate frozen ControlArena sample split (no LLM runs)
+        run: |
+          python experiments/controlarena_paper_gate/prepare_split.py
+          python -m unittest discover -s experiments/controlarena_paper_gate -v
+      - name: Validate factorial estimator on clearly simulated arithmetic tests
+        run: python -m unittest discover -s experiments/shifttogether -v
+      - name: Publish frozen preregistration manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-only-split-no-agent-results
+          path: experiments/controlarena_paper_gate/split.json
