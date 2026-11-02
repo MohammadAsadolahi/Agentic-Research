@@ -6,6 +6,7 @@ This repository tracks a research investigation into **AI-assisted design and co
 
 ## Start here
 
+0. **[Focused candidate: repair-decision identifiability](research/2026-11-02_REPAIR_DECISION_IDENTIFIABILITY.md)** — 2026-11-02 novelty stress test, proposed mechanism, combined-baseline challenge and falsifiable experiment.
 1. **[Current research state](research/RESEARCH_STATE.md)** — exact problem, what we have learned, decisions, hypotheses, uncertainties, and next actions.
 2. **[Real-world incident pilot](research/REAL_WORLD_INCIDENT_PILOT_2026-11-02.md)** — 12 sourced GitHub cases, one verified AI-associated fix/regression/fix chain, and the next reproduction protocol.
 3. **[Adversarial gap-discovery audit](research/2026-11-02_GAP_DISCOVERY_LOOP.md)** — latest closest competitors and a narrowly specified, falsifiable candidate gap.
