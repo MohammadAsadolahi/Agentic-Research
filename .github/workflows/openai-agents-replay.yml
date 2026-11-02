@@ -1,0 +1,37 @@
+name: OpenAI Agents SDK pinned-source session recovery
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "experiments/real_openai_agents_replay/**"
+      - ".github/workflows/openai-agents-replay.yml"
+permissions:
+  contents: read
+jobs:
+  session-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {label: original-bug, source: "4df9ecfae1761ca6fea67cc5a20b383c1d492024", expect: broken}
+          - {label: merged-repair, source: "787f9d6cc280b476f0367a788077ca7e400d59c1", expect: fixed}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Checkout exact SDK source
+        run: |
+          mkdir upstream
+          cd upstream
+          git init -q
+          git remote add origin https://github.com/openai/openai-agents-python.git
+          git fetch --depth 1 origin "${{ matrix.source }}"
+          git checkout -q --detach FETCH_HEAD
+      - name: Install actual SDK implementation
+        run: python -m pip install --disable-pip-version-check -e "./upstream"
+      - name: Replay injected write failure and check persistent state
+        run: EXPECT_SESSION_PAIR="${{ matrix.expect }}" python experiments/real_openai_agents_replay/reproduce_session_recovery.py
