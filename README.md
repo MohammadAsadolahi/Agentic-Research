@@ -6,6 +6,8 @@ This repository tracks a research investigation into **AI-assisted design and co
 
 ## Start here
 
+**[New experimental results: two real cross-boundary regressions](research/2026-11-02_TWO_REAL_BOUNDARIES_RESULTS.md)** — four verified GitHub Actions cases with pinned upstream code, raw logs, provenance correction and next strong-baseline gate. [Run and reproduce](https://github.com/MohammadAsadolahi/Agentic-Research/actions/runs/41457528866).
+
 **[New: change-aware contract verification research and executed witness](research/2026-11-02_CHANGE_AWARE_CONTRACT_TESTING.md)** — independent literature audit, source-linked real incident, 8-test synthetic Python demonstration and next falsification protocol. [Code](experiments/change_aware_contracts/).
 
 **[Latest: longitudinal benchmark novelty NO-GO](research/2026-11-02_LONGITUDINAL_BENCHMARK_NO_GO.md)** — new closest works EvoCode-Bench, FeatureArc and TDAD invalidate sequential-supersession-regression novelty; specifies only a limited agent-architecture intervention pilot.
