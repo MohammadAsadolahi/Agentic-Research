@@ -7,11 +7,12 @@ This repository tracks a research investigation into **AI-assisted design and co
 ## Start here
 
 1. **[Current research state](research/RESEARCH_STATE.md)** — exact problem, what we have learned, decisions, hypotheses, uncertainties, and next actions.
-2. **[Adversarial gap-discovery audit](research/2026-11-02_GAP_DISCOVERY_LOOP.md)** — latest closest competitors and a narrowly specified, falsifiable candidate gap.
-3. **[November 2026 critical reassessment](research/2026-11-02_REASSESSMENT.md)** — newly discovered empirical evidence, stronger competitors, updated novelty threats, and the next falsification experiment.
-4. **[Prior-art and novelty audit](research/PRIOR_ART.md)** — closest verified papers, overlaps, sources, and claims we must NOT make.
-5. **[Experimental roadmap](research/EXPERIMENT_PLAN.md)** — falsification-first study, baseline conditions, metrics, data splits, and stop rules.
-6. **[Practical systems and user feedback](research/PROJECTS_AND_FEEDBACK.md)** — existing agent architects, supporting tools, and evidence-quality caveats.
+2. **[Real-world incident pilot](research/REAL_WORLD_INCIDENT_PILOT_2026-11-02.md)** — 12 sourced GitHub cases, one verified AI-associated fix/regression/fix chain, and the next reproduction protocol.
+3. **[Adversarial gap-discovery audit](research/2026-11-02_GAP_DISCOVERY_LOOP.md)** — latest closest competitors and a narrowly specified, falsifiable candidate gap.
+4. **[November 2026 critical reassessment](research/2026-11-02_REASSESSMENT.md)** — newly discovered empirical evidence, stronger competitors, updated novelty threats, and the next falsification experiment.
+5. **[Prior-art and novelty audit](research/PRIOR_ART.md)** — closest verified papers, overlaps, sources, and claims we must NOT make.
+6. **[Experimental roadmap](research/EXPERIMENT_PLAN.md)** — falsification-first study, baseline conditions, metrics, data splits, and stop rules.
+7. **[Practical systems and user feedback](research/PROJECTS_AND_FEEDBACK.md)** — existing agent architects, supporting tools, and evidence-quality caveats.
 
 ## Current conclusions
 
