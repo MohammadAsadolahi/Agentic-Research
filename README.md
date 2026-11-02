@@ -6,6 +6,8 @@ This repository tracks a research investigation into **AI-assisted design and co
 
 ## Start here
 
+**[New: change-aware contract verification research and executed witness](research/2026-11-02_CHANGE_AWARE_CONTRACT_TESTING.md)** — independent literature audit, source-linked real incident, 8-test synthetic Python demonstration and next falsification protocol. [Code](experiments/change_aware_contracts/).
+
 **[Latest: longitudinal benchmark novelty NO-GO](research/2026-11-02_LONGITUDINAL_BENCHMARK_NO_GO.md)** — new closest works EvoCode-Bench, FeatureArc and TDAD invalidate sequential-supersession-regression novelty; specifies only a limited agent-architecture intervention pilot.
 
 **[Latest adversarial novelty verdict](research/2026-11-02_ADVERSARIAL_NOVELTY_VERDICT.md)** — important negative finding: DRD/HEC eliminates the alleged novelty of ask/probe-by-repair-disagreement; a narrow longitudinal empirical gap remains hypothetical.
