@@ -1,4 +1,7 @@
-"""Source-grounded offline reproducer from openai/openai-agents-python #4615.\nNo live model APIs. Historical failure injected in Session.add_items().\n"""\nimport asyncio
+"""Source-grounded offline reproducer from openai/openai-agents-python #4615.
+No live model APIs. Historical failure injected in Session.add_items().
+"""
+import asyncio
 import json
 import os
 from typing import Any
