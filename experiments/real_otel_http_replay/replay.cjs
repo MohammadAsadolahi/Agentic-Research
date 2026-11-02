@@ -41,7 +41,15 @@ function errorType(span) {
 }
 
 async function main() {
-  const version = require('@opentelemetry/instrumentation-http/package.json').version;
+  // Read the installed package metadata without assuming package.json is exported.
+  const path = require('node:path');
+  let packageDir = path.dirname(require.resolve('@opentelemetry/instrumentation-http'));
+  while (!fs.existsSync(path.join(packageDir, 'package.json'))) {
+    const parent = path.dirname(packageDir);
+    if (parent === packageDir) throw Error('Cannot locate installed package metadata');
+    packageDir = parent;
+  }
+  const version = JSON.parse(fs.readFileSync(path.join(packageDir, 'package.json'), 'utf8')).version;
   const expectedMissing = Number(process.env.EXPECTED_MISSING);
   if (!Number.isInteger(expectedMissing)) throw Error('EXPECTED_MISSING required');
   const server = http.createServer((req, res) => {
