@@ -1,10 +1,12 @@
 # Agentic Research
 
-> **Research status: discovery and hypothesis validation — November 2, 2026. No algorithmic novelty claim or experimental improvement is established.**
+> **Research status: adversarial novelty audit — November 2, 2026.** The proposed repair-disagreement evidence-selection algorithm is *not* a new decision principle (see decision-region determination, AISTATS 2014). **No new algorithm, benchmark result, or empirically confirmed novel gap has been established.**
 
 This repository tracks a research investigation into **AI-assisted design and continual maintenance of agentic systems**. The intended tool is an **AI systems architect**, not another orchestration framework: it should help a developer discover requirements, decide whether to use one or many agents, design prompts and tool contracts, choose workflow boundaries, and make evidence-backed revisions without overfitting to the latest reported failure.
 
 ## Start here
+
+**[Latest adversarial novelty verdict](research/2026-11-02_ADVERSARIAL_NOVELTY_VERDICT.md)** — important negative finding: DRD/HEC eliminates the alleged novelty of ask/probe-by-repair-disagreement; a narrow longitudinal empirical gap remains hypothetical.
 
 0. **[Focused candidate: repair-decision identifiability](research/2026-11-02_REPAIR_DECISION_IDENTIFIABILITY.md)** — 2026-11-02 novelty stress test, proposed mechanism, combined-baseline challenge and falsifiable experiment.
 1. **[Current research state](research/RESEARCH_STATE.md)** — exact problem, what we have learned, decisions, hypotheses, uncertainties, and next actions.
