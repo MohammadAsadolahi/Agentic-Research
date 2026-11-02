@@ -1,5 +1,7 @@
 # Research state and decision log
 
+> **Further adversarial audit (2026-11-02):** DAAF, DoVer, KPHarness, SAGE-Agent, Drift-Bench++, SpecPath, and related work eliminate almost every generic mechanism we previously proposed. The remaining candidate is a *joint decision/evaluation problem*: when a failure report underdetermines **both** stakeholder intent and technical cause, should an AI systems architect ask, probe, edit, retain, or escalate before making persistent changes? **This is not an established novel algorithm.** See [gap-discovery audit](2026-11-02_GAP_DISCOVERY_LOOP.md). Prior priorities below are historical; do not treat them as confirmed novelty.
+
 > **Important new reassessment (2026-11-02):** The latest literature review adds direct empirical evidence from Treude & Baltes (Oct 26), SLUMP/ProjectGuard, StateHarness, BenchTrace, ModularRSI, HarnessFix, and IEEE change-impact research. These further weaken novelty claims around structured project memory, scoped failure diagnosis and impact-aware test selection. **Read [Critical reassessment](2026-11-02_REASSESSMENT.md) before starting an algorithm or writing a novelty claim.** Original hypotheses below remain a historical research log, not an assertion of unresolved novelty.
 
 
