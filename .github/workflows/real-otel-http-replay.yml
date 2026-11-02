@@ -1,0 +1,69 @@
+name: Real OpenTelemetry HTTP semantic replay
+
+on:
+  push:
+    paths:
+      - 'experiments/real_otel_http_replay/**'
+      - '.github/workflows/real-otel-http-replay.yml'
+  pull_request:
+    paths:
+      - 'experiments/real_otel_http_replay/**'
+      - '.github/workflows/real-otel-http-replay.yml'
+  workflow_dispatch:
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: historical_pre_fix_release
+            http: '0.223.0'
+            sdk_node: '0.223.0'
+            trace_pkg: '@opentelemetry/sdk-trace-base'
+            trace_version: '2.12.0'
+            api: '1.9.1'
+            expected_missing: '3'
+          - label: later_fixed_release
+            http: '0.300.0'
+            sdk_node: '0.300.0'
+            trace_pkg: '@opentelemetry/sdk-trace'
+            trace_version: '3.0.0'
+            api: '1.10.0'
+            expected_missing: '0'
+    name: ${{ matrix.label }} (HTTP ${{ matrix.http }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install exact direct dependencies; record resolved transitive versions
+        working-directory: experiments/real_otel_http_replay
+        run: |
+          npm init -y
+          npm install --save-exact --no-audit --no-fund \
+            '@opentelemetry/api@${{ matrix.api }}' \
+            '@opentelemetry/instrumentation-http@${{ matrix.http }}' \
+            '@opentelemetry/sdk-node@${{ matrix.sdk_node }}' \
+            '${{ matrix.trace_pkg }}@${{ matrix.trace_version }}'
+          npm ls --all > installed-dependencies.txt || true
+      - name: Execute real HTTP requests and inspect exported real SDK spans
+        working-directory: experiments/real_otel_http_replay
+        env:
+          TRACE_PKG: ${{ matrix.trace_pkg }}
+          EXPECTED_MISSING: ${{ matrix.expected_missing }}
+          RESULT_FILE: results.json
+          OTEL_TRACES_EXPORTER: none
+          OTEL_METRICS_EXPORTER: none
+          OTEL_LOGS_EXPORTER: none
+        run: node replay.cjs
+      - name: Archive raw results and fully resolved npm dependency lock
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: otel-http-${{ matrix.label }}
+          path: |
+            experiments/real_otel_http_replay/results.json
+            experiments/real_otel_http_replay/package-lock.json
+            experiments/real_otel_http_replay/installed-dependencies.txt
